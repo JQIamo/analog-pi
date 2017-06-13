@@ -1,0 +1,63 @@
+Version 2.5.3
+
++ Add J9 low profile jumper to disable input offset.
++ Change part number for input offset POT (POT11) to one with low thermal coefficient. Adds ~$15 to BOM cost.
+
+Version 2.5.2
+
++ Change IUGC capacitance. Remove 15uF and 4.7uF, add 470pF and 150pF
++ Add relay to turn off I_VGA when unlock.
++ Adjust Integral Limiter: change feedback capacitance from 510pF to 1500pF,
+  and remove output capacitors
++ Change output impedance of monitor ports (IN_MON, ERR_MON, OUT_MON) from 1kOhm to 20 Ohms
+  With 1 kOhm output impedance, monitor signals bandwidth are slower than the actual signal.
+  To avoid confusion, using 20 Ohms output impedance makes the monitor ports show actual signals.
+  However, output resistors can be damaged if monitor port is shorted-circuit. 
+
+Version 2.5.1
+
++ Install 2 parallel 100 Ohms at OUT to make 50 Ohms output impedance,
+  mitigating impedance mismatch and signal reflections.
++ Change input resistors to 2 parallel 100 Ohms to make it possible to modify input impedance.
+  User can choose to install +/-10V 1 MOhm input impedance or +/-10V 50 Ohms input impedance.
++ Change maximum P_GAIN from 3 to 10
+
+Fix issues in version 2.5
+
++ Correct wiring at regulators L7912 and L7905
++ I_VGA and P_VGA trims cannot zero the output offset.
+  Change resistance around trim pot from 10kOhms to 3kOhms.
++ Unable to turn off P_GAIN and I_GAIN completely.
+  Control voltage need to be at least -1.0V to turn off.
+  Change resistance around external pot from 20kOhms to 10kOhms
+  Increase control range to +/-1.7V to make sure that VGA can be completely turned off
++ High frequency signal ~10MHz pass through the integrator and destructive interfere
+  with proportional signal
+  Change input resistance to Integrator from 1kOhm to 10kOhms to reduce direct transfer signal.
++ Switch MON_IN1 causes oscillation in ERR_MON
+  Long trace ERR_MON to LockDector makes LM7171 unstable.
+  Install 1kOhm resistor to isolate output from long trace.
++ POT4 Buffer Bandwidth control is too close to output BNC and does not provide gain
+  bandwidth limit as expected.  When use in low bandwidth mode, phase margin becomes worse.
+  Use high bandwidth mode and install a 3MHz low-pass filter before buffer U18
++ LM7171 in OUTPUT stage has resonant response at 25MHz.
+  Long trace PI to LockDector and IntLimiter makes LM7171 unstable
+  Install 1kOhm resistor to isolate output from long trace.
++ Switch bouncing (IUGC, LFGL, UNLOCK/LFGL/LOCK).
+  Install low-pass filter to mitigate switch bouncing.  Install MOSFETs for driving relays.
++ IN_MON, ERR_MON, OUT_MON overshoot at high frequency when connect 1m cable to oscilloscope.
+  Install 1kOhm isolation resistors at output.  Expect monitor ports to drive high impedance load.
+
+
+Version 2.5
+   A prototype that aim to fix low-gain DC-offset issue in version 2.4.1.
+The design implements separation between Proportional and Integral signals.
+The separation between proportional and integral gives advantages over combined implementation:
++ Proportional signal can be faster and less noisy with less op-amp stages (10MHz->25MHz).
++ Integral signal can have higher open loop gain (80dB->120dB), minimizing DC offset
+  from reference signal even with low proportional gain setting.
++ Allowing more flexible setting for slow(integral) and fast(proportional) signals.
+
+This version also implements experimental design for feedback integral limiter, and output limiter.
+
+Fine input offset is removed to use potentiometer knob for integral gain.

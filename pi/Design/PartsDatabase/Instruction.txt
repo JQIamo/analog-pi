@@ -1,0 +1,9 @@
+To use PI parts database:
+
+1. In program MultiSim menu, Go to Options > Global preferences
+2. Go to tab Paths
+3. Specify User database path to the file UsrComp_S_PI.usr in this directory
+4. Click OK to confirm changing user database.
+5. Restart the program
+
+Any change to parts in user database will be save to the file UsrComp_S_PI.usr in this directory

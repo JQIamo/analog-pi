@@ -1,0 +1,26 @@
+\Design\
+   EnclosureDesign\			       -Enclosure design for version 2.4.1, 2.5.1, .2.5.2
+      PanelCutout\                 -Sketchup: Enclosure cut-out designs
+	  PI_EnclosureParts.xlsx       -Excel: Bill of Material for enclosure
+   Gerber\                         -Gerber RS-274X, NC drill, Part-centroid export from PI.ewprj
+   PartsDatabase\                  -MultiSim: Database containing parts schematics, footprints,
+                                    and simulation models
+   PartsMap\                       -Layout location map of resistors, capacitors, and IC.
+   PI.ewnet                        -Ultiboard: netlist from Multisim to Ultiboard
+   PI.ewprj                        -Ultiboard: Layout file
+   PI.ms12                         -MultiSim: Schematic file
+   PI_BOM_1MRInputImpedance.xlsx   -MS Excel: Bill of Material for PCB (1MOhm input impedance)
+   PI_BOM_50RInputImpedance.xlsx   -MS Excel: Bill of Material for PCB (50Ohm input impedance)
+   PI_Layout.pdf                   -PDF: Printout PCB layout images
+   PI_Schematic.pdf                -PDF: Printout schematic design
+\Document\
+   PartsManual\                    -PDF: Data sheets of parts used in the project.
+   TestResults2.5.1Mod\            -Test results of Modified2.5.1 (similar to 2.5.2)
+   TestResults2.5Mod\              -Test results of Modified2.5 (similar to 2.5.1)
+   PI_BodePlot.pxt                 -IGOR Pro: Interactive Bode plot of
+                                    PI controller output response at different settings
+   PI_Manual.docx                  -MS Word: Manual
+   PI_Manual.pdf                   -PDF: Printout Manual
+\Simulation\                       -MultiSim: Test simulations for models and designs
+\FileDescription.txt               -Text: file description in the project
+\VersionLog.txt                    -Text: Current version and change log
