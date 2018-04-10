@@ -2,6 +2,9 @@
 Analog PI controller with > 10MHz bandwidth. Design by Joe Tiamsuphat.
 
 For full documentation of the circuit, see the [manual](https://github.com/JQIamo/analog-pi/blob/master/pi/Documents/PI_Manual.pdf).
+Please read the manual very carefully, especially the section "Initial Calibration" at page 14. A wrong calibration could result in damaging the circuit's output stages.
+
+
 
 ## File description
 
