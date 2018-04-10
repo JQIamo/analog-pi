@@ -28,7 +28,8 @@ eagle.epf
 *.crs
 
 *.dri
-*.drl
+# The following line is commented to allow git to add ultiboard-generated drill files. 
+# *.drl
 *.gpi
 *.pls
 
